@@ -1,68 +1,72 @@
 # Phase 4 — Manual Verification and Proof of Concept
 
+## Overview
+
+Phase 4 focuses on the manual verification and proof-of-concept testing of security vulnerabilities identified during the assessment.
+
+The objective of this phase was to determine whether potential security weaknesses were actually exploitable, verify their security impact, and collect supporting evidence.
+
+The assessment used both findings identified during automated scanning and vulnerabilities identified directly through manual testing.
+
+Only vulnerabilities that were successfully validated and supported by appropriate evidence were treated as confirmed findings.
+
+---
+
 ## Objective
 
-This phase focuses on manually verifying potential and manually identified vulnerabilities in the OWASP Juice Shop application.
+The main objectives of Phase 4 were:
 
-The purpose of this phase was to determine whether the identified security weaknesses were actually exploitable, confirm their security impact, and collect supporting proof-of-concept evidence.
-
-Phase 4 includes both:
-
-- Findings identified through automated scanning and subsequently validated manually.
-- Vulnerabilities identified directly through manual security testing.
-
----
-
-## Testing Approach
-
-The following tools and techniques were used during manual verification:
-
-- Burp Suite
-- SQLMap
-- Browser Developer Tools
-- Manual HTTP request and response analysis
-- Controlled proof-of-concept testing
-
-Automated scanner alerts were treated as potential vulnerabilities until manual testing confirmed their actual behavior and impact.
+- Manually verify potential vulnerabilities identified during Phase 3.
+- Identify additional vulnerabilities through manual security testing.
+- Validate the exploitability of identified weaknesses.
+- Demonstrate the security impact of confirmed vulnerabilities.
+- Collect proof-of-concept evidence.
+- Document affected endpoints and parameters.
+- Record the testing methodology and observed results.
+- Provide evidence for the final VAPT findings.
 
 ---
 
-## Confirmed Vulnerabilities
+## Testing Tools
 
-The following eight vulnerabilities were manually verified and confirmed during the assessment:
+The following tools and techniques were used during manual verification and proof-of-concept testing:
 
-| Finding ID | Vulnerability | Severity | Status |
-|---|---|---|---|
-| BAC | Broken Access Control – Privilege Escalation | Critical | Confirmed |
-| IDOR | Insecure Direct Object Reference – Unauthorized Basket Access | Medium | Confirmed |
-| AUTH | Weak Password Recovery Mechanism via Security Question | Critical | Confirmed |
-| SQLI-01 | SQL Injection – Authentication Bypass | Critical | Confirmed |
-| SQLI-02 | SQL Injection – Product Search/Data Extraction | High | Confirmed |
-| XSS | Reflected Cross-Site Scripting – Search Parameter | Medium | Confirmed |
-| CSRF | Cross-Site Request Forgery – Profile Update | Medium | Confirmed |
-| OR | Open Redirect – Unvalidated Redirect Parameter | Medium | Confirmed |
+| Tool / Technique | Purpose |
+|---|---|
+| Burp Suite | HTTP request interception, modification, and manual testing |
+| SQLMap | SQL Injection validation and database information extraction |
+| Browser Developer Tools | Client-side request and response analysis |
+| Manual Testing | Vulnerability identification and verification |
+| Crafted HTTP Requests | Controlled proof-of-concept testing |
 
 ---
 
-## Manual Verification Summary
+## Phase 3 to Phase 4 Validation
 
-### 1. Broken Access Control — Privilege Escalation
+Phase 3 was primarily focused on automated vulnerability scanning and alert review.
 
-**Finding ID:** `BAC`
+OWASP ZAP identified potential security issues that required further investigation.
 
-The registration functionality was manually tested to determine whether client-controlled role information could be modified.
+The following findings were carried forward from automated scanning for manual validation:
 
-Burp Suite was used to intercept and modify the registration request. The modified request was then used to verify whether an administrator-level account could be created.
+| Finding ID | Vulnerability | Source |
+|---|---|---|
+| SQLI-02 | SQL Injection – Product Search and Data Extraction | OWASP ZAP |
+| OR | Open Redirect – Unvalidated Redirect Parameter | OWASP ZAP |
 
-The vulnerability was successfully confirmed.
+The remaining confirmed findings were identified through manual security testing during Phase 4.
 
-**Evidence:**
+The assessment followed the process:
 
 ```text
-evidence/
-└── phase4/
-    └── bac/
-        ├── bac01-burp-registration-request.jpg
-        ├── bac02-burp-role-admin-modification.jpg
-        ├── bac03-admin-page-access.jpg
-        └── bac04-admin-registration-challenge-success.jpg
+Automated Scanning / Manual Discovery
+                ↓
+           Alert Review
+                ↓
+       Manual Verification
+                ↓
+       Proof of Concept
+                ↓
+        Evidence Collection
+                ↓
+        Confirmed Finding
