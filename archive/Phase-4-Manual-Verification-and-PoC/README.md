@@ -87,3 +87,13 @@ Automated Scanning / Manual Discovery
         Evidence Collection
                 ↓
         Confirmed Finding
+
+evidence/phase4/
+├── authentication/
+├── bac/
+├── csrf/
+├── idor/
+├── openredirect/
+├── sqli-1/
+├── sqli-2/
+└── xss-reflected/
