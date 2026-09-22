@@ -164,3 +164,11 @@ Supporting proof-of-concept and validation evidence for the confirmed vulnerabil
 
 ```text
 evidence/phase4/
+├── authentication/
+├── bac/
+├── csrf/
+├── idor/
+├── openredirect/
+├── sqli-1/
+├── sqli-2/
+└── xss-reflected/
