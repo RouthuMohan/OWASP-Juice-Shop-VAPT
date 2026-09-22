@@ -14,7 +14,7 @@ The objective was to identify the target, exposed ports and services, technologi
 |---|---|
 | Target Application | OWASP Juice Shop |
 | Target URL | `http://127.0.0.1:3000` |
-| Environment | Local Lab |
+| Environment | Controlled Local Laboratory |
 | Testing Type | Web Application VAPT |
 
 ---
@@ -48,7 +48,7 @@ The OWASP Juice Shop application was successfully accessed in the browser on por
 
 **Evidence:**
 
-![OWASP Juice Shop Target](images/01-target-application.png)
+![OWASP Juice Shop Target](../../evidence/phase2/images-proved/01-target-application.png)
 
 ---
 
@@ -64,9 +64,9 @@ The scan confirmed that the target web application was accessible through port `
 
 **Evidence:**
 
-![Nmap Port Scan](images/02-nmap-port-scan.png)
+![Nmap Port Scan](../../evidence/phase2/images-proved/02-nmap-port-scan.png)
 
-![Nmap Service Detection](images/03-nmap-service-detection.png)
+![Nmap Service Detection](../../evidence/phase2/images-proved/03-nmap-service-detection.png)
 
 ---
 
@@ -82,7 +82,7 @@ Wappalyzer was used to fingerprint technologies associated with the OWASP Juice 
 
 **Evidence:**
 
-![Wappalyzer Technology Detection](images/04-wappalyzer-technologies.png)
+![Wappalyzer Technology Detection](../../evidence/phase2/images-proved/04-wappalyzer-technologies.png)
 
 ---
 
@@ -98,7 +98,7 @@ The application's `robots.txt` file was accessed and reviewed for potentially in
 
 **Evidence:**
 
-![robots.txt Analysis](images/05-robots-txt.png)
+![robots.txt Analysis](../../evidence/phase2/images-proved/05-robots-txt.png)
 
 ---
 
@@ -120,7 +120,7 @@ This confirmed successful communication between the client and the target applic
 
 **Evidence:**
 
-![Burp Suite HTTP Request Response](images/06-burp-http-request-response.jpeg)
+![Burp Suite HTTP Request Response](../../evidence/phase2/images-proved/06-burp-http-request-response.jpeg)
 
 ---
 
@@ -136,7 +136,7 @@ ffuf was used against the local OWASP Juice Shop application to enumerate applic
 
 **Evidence:**
 
-![ffuf Directory Discovery](images/07-ffuf-directory-discovery.png)
+![ffuf Directory Discovery](../../evidence/phase2/images-proved/07-ffuf-directory-discovery.png)
 
 ---
 
@@ -167,7 +167,7 @@ Examples included:
 
 **Evidence:**
 
-![OWASP ZAP Spider Results](images/08-zap-spider-results.png)
+![OWASP ZAP Spider Results](../../evidence/phase2/images-proved/08-zap-spider-results.png)
 
 ---
 
@@ -186,7 +186,7 @@ The crawl identified application resources, JavaScript files, REST endpoints, an
 
 **Evidence:**
 
-![OWASP ZAP AJAX Spider](images/09-zap-ajax-spider-results.png)
+![OWASP ZAP AJAX Spider](../../evidence/phase2/images-proved/09-zap-ajax-spider-results.png)
 
 ---
 
@@ -205,27 +205,24 @@ The activities performed included:
 - Traditional web crawling
 - AJAX-based dynamic crawling
 
-The information and endpoints discovered during this phase will be used as the foundation for subsequent vulnerability assessment and penetration testing phases.
+The information and endpoints discovered during this phase were used as the foundation for subsequent vulnerability assessment and penetration testing phases.
 
 ---
 
 ## Evidence Structure
 
+The reconnaissance evidence is stored in the main repository under:
+
 ```text
-images/
-├── 01-target-application.png
-├── 02-nmap-port-scan.png
-├── 03-nmap-service-detection.png
-├── 04-wappalyzer-technologies.png
-├── 05-robots-txt.png
-├── 06-burp-http-request-response.jpeg
-├── 07-ffuf-directory-discovery.png
-├── 08-zap-spider-results.png
-└── 09-zap-ajax-spider-results.png
-```
-
----
-
-## Disclaimer
-
-All testing documented in this project was performed against OWASP Juice Shop in a controlled local lab environment for educational and cybersecurity training purposes.
+evidence/
+└── phase2/
+    └── images-proved/
+        ├── 01-target-application.png
+        ├── 02-nmap-port-scan.png
+        ├── 03-nmap-service-detection.png
+        ├── 04-wappalyzer-technologies.png
+        ├── 05-robots-txt.png
+        ├── 06-burp-http-request-response.jpeg
+        ├── 07-ffuf-directory-discovery.png
+        ├── 08-zap-spider-results.png
+        └── 09-zap-ajax-spider-results.png
