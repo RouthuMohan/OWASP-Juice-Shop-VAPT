@@ -58,6 +58,23 @@ The remaining confirmed findings were identified through manual security testing
 
 The assessment followed the process:
 
+## Confirmed Vulnerabilities
+
+The manual verification and proof-of-concept phase confirmed the following eight vulnerabilities in the OWASP Juice Shop application.
+
+| Finding ID | Vulnerability | Severity | Status |
+|---|---|---|---|
+| BAC | Broken Access Control – Privilege Escalation via Registration | Critical | Confirmed |
+| IDOR | Insecure Direct Object Reference – Unauthorized Basket Access | Medium | Confirmed |
+| AUTH | Weak Password Recovery | Critical | Confirmed |
+| SQLI-01 | SQL Injection – Authentication Bypass | Critical | Confirmed |
+| SQLI-02 | SQL Injection – Product Search and Data Extraction | High | Confirmed |
+| XSS | Reflected Cross-Site Scripting – Search Parameter | Medium | Confirmed |
+| CSRF | Cross-Site Request Forgery – Profile Update | Medium | Confirmed |
+| OR | Open Redirect – Unvalidated Redirect Parameter | Medium | Confirmed |
+
+These findings were manually verified and supported by proof-of-concept testing and evidence collected during the assessment.
+
 ```text
 Automated Scanning / Manual Discovery
                 ↓
