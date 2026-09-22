@@ -1,0 +1,133 @@
+This Vulnerability Assessment and Penetration Testing (VAPT)
+engagement was conducted against the OWASP Juice Shop application in
+a controlled local testing environment. The assessment followed a
+structured methodology consisting of planning and scoping,
+reconnaissance, vulnerability scanning and assessment, and manual
+verification of identified vulnerabilities.
+
+During the assessment, automated security testing and manual testing
+were used to identify and validate security weaknesses in the
+application. The identified vulnerabilities were manually verified
+and supported with appropriate evidence collected during the
+assessment.
+
+\subsection*{Summary of Findings}
+
+A total of eight security vulnerabilities were confirmed during the
+assessment. The findings covered multiple security areas, including
+access control, authentication, SQL injection, cross-site scripting,
+request integrity, and redirect handling.
+
+The confirmed findings are summarized below:
+
+\begin{itemize}
+    \item \textbf{BAC -- Broken Access Control:} Privilege escalation
+    through the registration functionality.
+
+    \item \textbf{IDOR -- Insecure Direct Object Reference:}
+    Unauthorized access to another user's basket by manipulating the
+    basket identifier.
+
+    \item \textbf{AUTH -- Weak Password Recovery:} Weaknesses in the
+    password recovery mechanism that may affect account security.
+
+    \item \textbf{SQLI-01 -- SQL Injection:} SQL injection affecting
+    the login functionality and allowing authentication bypass under
+    the tested conditions.
+
+    \item \textbf{SQLI-02 -- SQL Injection:} SQL injection affecting
+    the product search functionality and allowing unauthorized
+    database interaction under the tested conditions.
+
+    \item \textbf{XSS -- Reflected Cross-Site Scripting:} Execution
+    of attacker-controlled JavaScript through the vulnerable search
+    functionality.
+
+    \item \textbf{CSRF -- Cross-Site Request Forgery:} Unauthorized
+    profile modification through a cross-site request while the
+    victim is authenticated.
+
+    \item \textbf{OR -- Open Redirect:} Redirect handling that allows
+    an attacker-controlled destination to be used under the tested
+    conditions.
+\end{itemize}
+
+\subsection*{Risk Summary}
+
+The confirmed findings consisted of three Critical-severity
+vulnerabilities, one High-severity vulnerability, and four
+Medium-severity vulnerabilities.
+
+The Critical findings affect important application security controls,
+including authentication, authorization, and account recovery. The
+High and Medium findings demonstrate additional weaknesses affecting
+database interaction, client-side security, resource authorization,
+request integrity, and redirect handling.
+
+The combination of these findings demonstrates that multiple layers
+of application security controls require strengthening.
+
+\subsection*{Recommended Next Steps}
+
+The Critical and High severity findings should be addressed with
+priority. Recommended remediation measures include implementing
+parameterized database queries, enforcing server-side authorization,
+strengthening password recovery, applying appropriate output
+encoding, implementing object-level access controls, and protecting
+state-changing requests against CSRF.
+
+Following remediation, the application should undergo a dedicated
+retesting process. Each confirmed vulnerability should be tested
+again using the original proof-of-concept and relevant alternative
+test cases to verify that the vulnerability has been effectively
+addressed.
+
+\subsection*{Limitations}
+
+This assessment was conducted under the following constraints, which
+should be considered when interpreting the findings in this report:
+
+\begin{itemize}
+    \item The engagement was performed by a single tester within a
+    fixed testing window, rather than a multi-tester team over an
+    extended engagement period.
+
+    \item Testing was scoped to the locally hosted OWASP Juice Shop
+    instance only; no testing was performed against a production
+    deployment, third-party services, or the underlying host
+    operating system.
+
+    \item Denial-of-Service (DoS) testing was explicitly excluded
+    from the assessment scope and was not performed.
+
+    \item Automated scanning coverage was limited to OWASP ZAP,
+    ffuf, and SQLMap; findings not detected by these tools or through
+    manual testing within the assessment window may not be reflected
+    in this report.
+
+    \item Large-scale exploitation activities, such as bulk data
+    extraction, mass account enumeration, or credential-cracking
+    against retrieved password hashes, were intentionally not
+    performed, consistent with a controlled and non-disruptive
+    testing approach.
+\end{itemize}
+
+This assessment reflects the security posture of the application at
+the time of testing and within the defined scope. It should not be
+interpreted as a guarantee that no additional vulnerabilities exist
+outside the tested scope or testing methodology.
+
+\subsection*{Final Statement}
+
+This assessment provides a security-focused view of the OWASP Juice
+Shop application based on the testing activities performed within
+the defined assessment scope. The findings, evidence, risk
+assessment, and remediation recommendations documented in this
+report provide a basis for improving the application's security
+controls.
+
+Successful remediation should be followed by security retesting and
+continuous security testing throughout the application development
+lifecycle. This helps ensure that previously identified
+vulnerabilities remain resolved and that newly introduced security
+weaknesses are identified before deployment.

@@ -1,0 +1,185 @@
+This section consolidates the remediation recommendations for all
+confirmed vulnerabilities identified during this assessment. Detailed,
+finding-specific remediation guidance is also provided within each
+individual finding section earlier in this report.
+
+\subsection*{Prioritized Remediation Summary}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|p{5cm}|l|p{4cm}|}
+\hline
+\textbf{Finding ID} & \textbf{Vulnerability} & \textbf{Priority} & \textbf{Recommended Fix} \\
+\hline
+SQLI-01 & SQL Injection -- Login & Immediate & Use parameterized queries \\
+\hline
+BAC & Broken Access Control & Immediate & Enforce role assignment on server side \\
+\hline
+AUTH & Weak Password Recovery & Immediate & Use secure token-based password reset \\
+\hline
+SQLI-02 & SQL Injection -- Search & High & Use parameterized queries \\
+\hline
+XSS & Reflected XSS & Medium & Encode output and apply CSP \\
+\hline
+IDOR & Insecure Direct Object Reference & Medium & Verify object ownership server-side \\
+\hline
+OR & Open Redirect & Medium & Validate redirect destination with strict allowlist \\
+\hline
+CSRF & Cross-Site Request Forgery & Medium & Implement CSRF tokens \\
+\hline
+\end{tabular}
+\caption{Prioritized remediation summary}
+\end{table}
+
+\subsection*{Immediate Priority -- Critical Findings}
+
+\subsubsection*{SQL Injection -- Authentication Bypass (SQLI-01)}
+
+\begin{itemize}
+    \item Use parameterized queries or prepared statements for all
+    database queries, instead of directly inserting user input into
+    SQL statements.
+
+    \item Apply appropriate server-side validation to the
+    \texttt{email} parameter.
+
+    \item Use a database account with only the minimum privileges
+    required by the application.
+
+    \item Prevent database errors and SQL query details from being
+    exposed to application users.
+\end{itemize}
+
+\subsubsection*{Broken Access Control (BAC)}
+
+\begin{itemize}
+    \item Do not allow the client to control the \texttt{role} value
+    during account registration.
+
+    \item Always assign the default user role on the server side,
+    regardless of any value supplied by the client.
+
+    \item Restrict administrator privilege assignment to a separate,
+    authenticated, and authorized administrative process.
+
+    \item Apply server-side validation to reject unexpected or
+    unauthorized fields in the registration request.
+\end{itemize}
+
+\subsubsection*{Weak Password Recovery Mechanism (AUTH)}
+
+\begin{itemize}
+    \item Replace security-question-based recovery with a
+    cryptographically random, single-use, time-limited reset token
+    sent through a verified communication channel.
+
+    \item Apply rate limiting and monitoring to password recovery
+    attempts.
+
+    \item Avoid revealing information that helps an attacker determine
+    whether a target account exists.
+
+    \item Store passwords using a strong, modern password hashing
+    algorithm such as Argon2 or bcrypt with appropriate salting.
+\end{itemize}
+
+\subsection*{High Priority Findings}
+
+\subsubsection*{SQL Injection -- Product Search Parameter (SQLI-02)}
+
+\begin{itemize}
+    \item Use parameterized queries or prepared statements for the
+    product search query, instead of directly inserting the
+    \texttt{q} parameter into SQL statements.
+
+    \item Apply appropriate server-side validation to the \texttt{q}
+    parameter.
+
+    \item Use a database account with only the minimum privileges
+    required by the application.
+
+    \item Prevent database errors and SQL query details from being
+    exposed to application users.
+\end{itemize}
+
+\subsection*{Medium Priority Findings}
+
+\subsubsection*{Reflected Cross-Site Scripting (XSS)}
+
+\begin{itemize}
+    \item Encode all user-supplied input before displaying it back on
+    the page.
+
+    \item Apply appropriate context-aware output encoding to the
+    \texttt{q} parameter before rendering user-controlled content.
+
+    \item Implement a Content Security Policy (CSP) to restrict which
+    scripts are allowed to execute on the page.
+\end{itemize}
+
+\subsubsection*{Insecure Direct Object Reference (IDOR)}
+
+\begin{itemize}
+    \item Verify on the server side that the requested resource
+    (e.g. basket) belongs to the currently authenticated user before
+    returning any data.
+
+    \item Reject the request with an access-denied response if
+    ownership cannot be verified.
+
+    \item Avoid exposing predictable identifiers for resources
+    containing user-specific data where appropriate.
+\end{itemize}
+
+\subsubsection*{Open Redirect (OR)}
+
+\begin{itemize}
+    \item Validate the redirect destination against a strict allowlist
+    of approved destinations rather than checking for a substring
+    match.
+
+    \item Prefer relative paths for internal redirects instead of
+    accepting a full external URL from the client.
+
+    \item Where external redirects are required, consider displaying
+    a clear warning before navigating to an external domain.
+\end{itemize}
+
+\subsubsection*{Cross-Site Request Forgery (CSRF)}
+
+\begin{itemize}
+    \item Implement a strong, unpredictable CSRF token for all
+    state-changing requests.
+
+    \item Validate the CSRF token on the server side before processing
+    any request.
+
+    \item Apply appropriate \texttt{SameSite} cookie settings as an
+    additional layer of protection.
+\end{itemize}
+
+\subsection*{General Security Recommendations}
+
+In addition to the finding-specific fixes above, the following
+general improvements are recommended to strengthen the overall
+security posture of the application:
+
+\begin{itemize}
+    \item Apply the principle of least privilege consistently across
+    all database accounts, user roles, and application components.
+
+    \item Perform regular security testing, including both automated
+    scanning and manual validation, as part of the development
+    lifecycle.
+
+    \item Apply consistent server-side validation across all
+    endpoints, rather than relying on client-side checks alone.
+
+    \item Implement centralized security logging and monitoring to
+    detect and respond to suspicious activity.
+
+    \item Review and configure missing or incomplete security headers,
+    such as the Content-Security-Policy header, across all
+    application routes.
+\end{itemize}

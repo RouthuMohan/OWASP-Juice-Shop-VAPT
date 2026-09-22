@@ -1,0 +1,176 @@
+This section describes the retesting approach that will be used to
+verify the remediation of vulnerabilities identified during the
+assessment.
+
+Retesting should be performed after the recommended security fixes
+have been implemented. The purpose of retesting is to determine
+whether the previously identified vulnerabilities have been
+successfully addressed and whether the implemented fixes introduce
+any new security issues.
+
+\subsection*{Retesting Objectives}
+
+The main objectives of the retesting activity are:
+
+\begin{itemize}
+
+    \item Verify that the previously confirmed vulnerabilities have
+    been remediated.
+
+    \item Reproduce the original test conditions and verify that the
+    previously successful proof-of-concept no longer works.
+
+    \item Confirm that the implemented security controls are enforced
+    correctly on the server side.
+
+    \item Verify that remediation does not negatively affect the
+    intended application functionality.
+
+    \item Identify any vulnerabilities that remain partially or
+    completely unresolved.
+
+\end{itemize}
+
+\subsection*{Retesting Methodology}
+
+The retesting process will follow the same general approach used
+during the original assessment.
+
+\begin{enumerate}
+
+    \item Review the remediation implemented for each confirmed
+    vulnerability.
+
+    \item Reproduce the original request, input, or attack condition
+    used during the initial assessment.
+
+    \item Verify whether the previously demonstrated exploitation
+    remains possible.
+
+    \item Verify that the relevant security control is now correctly
+    enforced.
+
+    \item Test the affected application functionality to confirm that
+    the remediation has not introduced unintended behavior.
+
+    \item Record the retesting result and supporting evidence for each
+    vulnerability.
+
+\end{enumerate}
+
+\subsection*{Retesting Status}
+
+At the time of preparing this report, remediation had not yet been
+implemented against the target application. Retesting was therefore
+not performed as part of this engagement and is documented here as
+planned future work, to be carried out once the recommended fixes in
+Section~\ref{sec:remediation} have been applied.
+
+The following table defines the retesting status that will be used
+for the confirmed findings once remediation is complete:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|p{6cm}|l|}
+\hline
+\textbf{Finding ID} & \textbf{Vulnerability} & \textbf{Status} \\
+\hline
+BAC &
+Broken Access Control -- Privilege Escalation via Registration &
+Pending \\
+\hline
+IDOR &
+Insecure Direct Object Reference -- Unauthorized Basket Access &
+Pending \\
+\hline
+AUTH &
+Weak Password Recovery &
+Pending \\
+\hline
+SQLI-01 &
+SQL Injection -- Authentication Bypass &
+Pending \\
+\hline
+SQLI-02 &
+SQL Injection -- Product Search and Data Extraction &
+Pending \\
+\hline
+XSS &
+Reflected Cross-Site Scripting -- Search Parameter &
+Pending \\
+\hline
+CSRF &
+Cross-Site Request Forgery -- Profile Update &
+Pending \\
+\hline
+OR &
+Open Redirect -- Unvalidated Redirect Parameter &
+Pending \\
+\hline
+\end{tabular}
+\caption{Retesting status of confirmed vulnerabilities}
+\end{table}
+
+\subsection*{Retesting Evidence}
+
+For each remediated vulnerability, evidence should be collected to
+demonstrate the result of the retest.
+
+The evidence may include:
+
+\begin{itemize}
+
+    \item HTTP requests and responses captured using Burp Suite.
+
+    \item Screenshots showing the security control preventing the
+    previously demonstrated attack.
+
+    \item Updated application behavior after remediation.
+
+    \item Scanner results, where automated verification is
+    applicable.
+
+    \item Any remaining error messages or security-related responses.
+
+\end{itemize}
+
+\subsection*{Retesting Result Classification}
+
+Each vulnerability should be assigned one of the following results
+after retesting:
+
+\begin{itemize}
+
+    \item \textbf{Remediated} -- The vulnerability could no longer be
+    reproduced and the relevant security control was verified.
+
+    \item \textbf{Partially Remediated} -- The original exploitation
+    was reduced or restricted, but the vulnerability or its security
+    impact remains under certain conditions.
+
+    \item \textbf{Not Remediated} -- The original vulnerability could
+    still be reproduced after remediation.
+
+    \item \textbf{Not Retested} -- Retesting could not be performed
+    because the required remediation or testing conditions were not
+    available.
+
+\end{itemize}
+
+\subsection*{Final Retesting Statement}
+
+Retesting results will be updated after the recommended remediation
+activities have been implemented and verified. As this engagement
+was conducted against an intentionally vulnerable training
+application rather than a production system, remediation and
+retesting fall outside the scope of the current assessment and are
+recommended as a follow-up activity.
+
+The final retesting record should include the original finding ID,
+remediation status, retesting procedure, observed result, supporting
+evidence, and final status for each vulnerability.
+
+This approach provides a clear comparison between the original
+security assessment and the post-remediation security state of the
+application.

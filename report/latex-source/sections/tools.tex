@@ -1,0 +1,60 @@
+The assessment used a combination of manual and automated security
+testing tools. Each tool was selected based on the specific activity
+it supported during reconnaissance, vulnerability assessment, and
+manual validation. Detailed usage of each tool, along with evidence,
+is documented within the relevant phase chapters later in this
+report.
+
+\begin{table}[!htb]
+\small
+\centering
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.20\textwidth}
+                                X
+                                p{0.24\textwidth}}
+\toprule
+Tool & Primary Purpose & Assessment Activity \\
+\midrule
+
+Browser &
+Manual exploration of application pages, functions, and accessible
+resources &
+Reconnaissance \\
+
+Nmap &
+Port, service, and basic network discovery &
+Reconnaissance \\
+
+Wappalyzer &
+Identification of technologies, frameworks, and application
+components &
+Technology Identification \\
+
+robots.txt Review &
+Manual review of the application's robots.txt file to identify
+disclosed or restricted paths &
+Reconnaissance \\
+
+Burp Suite &
+Interception and analysis of HTTP requests and responses, including
+headers, cookies, methods, and parameters &
+Manual Testing and Validation \\
+
+OWASP ZAP &
+Application crawling, Spider and AJAX Spider discovery, passive
+scanning, and active security scanning &
+Reconnaissance and Vulnerability Assessment \\
+
+ffuf &
+Discovery of directories, endpoints, and accessible application
+paths &
+Endpoint Discovery \\
+
+SQLMap &
+Automated testing and verification of SQL Injection vulnerabilities &
+Vulnerability Assessment \\
+
+\bottomrule
+\end{tabularx}
+\caption{Security tools used during the assessment}
+\label{tab:recon-tools}
+\end{table}

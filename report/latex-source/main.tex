@@ -1,0 +1,313 @@
+\documentclass[11pt,a4paper]{report}
+
+% --------------------------------------------------
+% Packages
+% --------------------------------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{tcolorbox}
+\usepackage{needspace}
+
+% --------------------------------------------------
+% Colors
+% --------------------------------------------------
+\definecolor{primary}{HTML}{17365D}
+\definecolor{secondary}{HTML}{2F75B5}
+\definecolor{lightblue}{HTML}{EAF2F8}
+\definecolor{lightgray}{HTML}{F4F6F7}
+\definecolor{darkgray}{HTML}{444444}
+\definecolor{critical}{HTML}{922B21}
+\definecolor{high}{HTML}{C0392B}
+\definecolor{medium}{HTML}{D68910}
+\definecolor{low}{HTML}{2874A6}
+
+% --------------------------------------------------
+% Hyperlinks
+% --------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=secondary,
+    citecolor=primary,
+    pdftitle={OWASP Juice Shop VAPT Report},
+    pdfauthor={Mohan Routhu}
+}
+
+% --------------------------------------------------
+% Page Style
+% --------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{OWASP Juice Shop VAPT}}
+\fancyhead[R]{Security Assessment Report}
+\fancyfoot[C]{\thepage}
+
+\setlength{\headheight}{14pt}
+
+% --------------------------------------------------
+% Spacing
+% --------------------------------------------------
+\setstretch{1.2}
+
+% --------------------------------------------------
+% Chapter Style
+% --------------------------------------------------
+\titleformat{\chapter}
+    {\normalfont\Huge\bfseries\color{primary}}
+    {\thechapter}
+    {1em}
+    {}
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\color{primary}}
+    {\thesection}
+    {1em}
+    {}
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\color{secondary}}
+    {\thesubsection}
+    {1em}
+    {}
+
+% --------------------------------------------------
+% Tables
+% --------------------------------------------------
+\renewcommand{\arraystretch}{1.25}
+
+% --------------------------------------------------
+% Captions
+% --------------------------------------------------
+\captionsetup{
+    font=small,
+    labelfont=bf
+}
+
+% --------------------------------------------------
+% Code / Command Style
+% --------------------------------------------------
+\lstset{
+    backgroundcolor=\color{lightgray},
+    basicstyle=\ttfamily\small,
+    frame=single,
+    breaklines=true,
+    columns=fullflexible
+}
+
+% --------------------------------------------------
+% Lists
+% --------------------------------------------------
+\setlist[itemize]{itemsep=3pt,topsep=4pt}
+\setlist[enumerate]{itemsep=3pt,topsep=4pt}
+
+% --------------------------------------------------
+% Document
+% --------------------------------------------------
+\begin{document}
+
+% ==================================================
+% COVER PAGE
+% ==================================================
+
+\begin{titlepage}
+    \centering
+
+    \vspace*{1.5cm}
+
+    {\Huge\bfseries\color{primary}
+    OWASP Juice Shop VAPT Report\par}
+
+    \vspace{0.5cm}
+
+    {\Large
+    Vulnerability Assessment and Penetration Testing\par}
+
+    \vspace{1.2cm}
+
+    \rule{\textwidth}{1pt}
+
+    \vspace{0.4cm}
+
+    {\large\bfseries Security Assessment Report\par}
+
+    \vspace{0.4cm}
+
+    \rule{\textwidth}{1pt}
+
+    \vfill
+
+    {\large\textbf{Prepared By}\par}
+
+    \vspace{0.25cm}
+
+    {\Large Mohan Routhu\par}
+
+    \vspace{0.8cm}
+
+    \begin{tabular}{rl}
+        \textbf{Target:} & OWASP Juice Shop \\
+        \textbf{Environment:} & Localhost \\
+        \textbf{Assessment Type:} & VAPT
+    \end{tabular}
+
+    \vfill
+
+    {\large September 2026 \par}
+
+\end{titlepage}
+
+% ==================================================
+% TABLE OF CONTENTS
+% ==================================================
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+\clearpage
+
+% ==================================================
+% MAIN REPORT
+% ==================================================
+
+\pagenumbering{arabic}
+
+\chapter{Executive Summary}
+\label{chap:executive-summary}
+\input{sections/executive-summary}
+
+\chapter{Introduction}
+\label{chap:introduction}
+\input{sections/introduction}
+
+% ==================================================
+% CHAPTER 3 -- ASSESSMENT APPROACH
+% ==================================================
+
+\chapter{Assessment Approach}
+\label{chap:assessment-approach}
+
+\section{Project Objectives}
+\input{sections/objectives}
+
+\section{Scope and Rules of Engagement}
+\input{sections/scope}
+
+\section{VAPT Methodology}
+\input{sections/methodology}
+
+\section{Tools and Technologies}
+\input{sections/tools}
+
+% ==================================================
+% CHAPTER 4 -- PHASE 1
+% ==================================================
+
+\chapter{Phase 1 -- Planning and Scoping}
+\label{chap:phase1}
+\input{sections/phase1-planning}
+
+% ==================================================
+% CHAPTER 5 -- PHASE 2
+% ==================================================
+
+\chapter{Phase 2 -- Reconnaissance}
+\label{chap:phase2}
+\input{sections/phase2-reconnaissance}
+
+% ==================================================
+% CHAPTER 6 -- PHASE 3
+% ==================================================
+
+\chapter{Phase 3 -- Vulnerability Assessment}
+\label{chap:phase3}
+\input{sections/phase3-scanning}
+
+% ==================================================
+% CHAPTER 7 -- PHASE 4: MANUAL VERIFICATION AND PROOF OF CONCEPT
+% ==================================================
+
+\chapter{Phase 4 -- Manual Verification and Proof of Concept}
+\label{chap:phase4}
+
+\section{Broken Access Control}
+\input{sections/finding-bac}
+
+\section{Insecure Direct Object Reference}
+\input{sections/finding-idor}
+
+\section{Authentication Vulnerabilities}
+\input{sections/finding-authentication}
+
+\section{SQL Injection}
+\input{sections/finding-sqli}
+
+\section{Cross-Site Scripting}
+\input{sections/finding-xss}
+
+\section{Cross-Site Request Forgery}
+\input{sections/finding-csrf}
+
+\needspace{15\baselineskip}
+\section{Open Redirect}
+\input{sections/finding-openredirect}
+
+% ==================================================
+% CHAPTER 8 -- PHASE 5: POST-EXPLOITATION AND IMPACT ANALYSIS
+% ==================================================
+
+\chapter{Phase 5 -- Post-Exploitation and Impact Analysis}
+\label{chap:phase5}
+\input{sections/post-exploitation}
+
+% ==================================================
+% CHAPTER 9 -- PHASE 6: REPORTING AND RISK ASSESSMENT
+% ==================================================
+
+\chapter{Phase 6 -- Reporting and Risk Assessment}
+\label{chap:phase6}
+
+\section{Vulnerability Findings Overview}
+\input{sections/findings-overview}
+
+\section{Risk Summary}
+\input{sections/risk-summary}
+
+% ==================================================
+% CHAPTER 10 -- PHASE 7: REMEDIATION AND RETESTING
+% ==================================================
+
+\chapter{Phase 7 -- Remediation and Retesting}
+\label{chap:phase7}
+
+\section{Remediation Recommendations}
+\label{sec:remediation}
+\input{sections/remediation}
+
+\section{Retesting}
+\input{sections/retesting}
+
+% ==================================================
+% CHAPTER 11 -- CONCLUSION
+% ==================================================
+
+\chapter{Conclusion}
+\label{chap:conclusion}
+\input{sections/conclusion}
+
+\end{document}

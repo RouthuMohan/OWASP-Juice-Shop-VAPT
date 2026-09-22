@@ -1,0 +1,53 @@
+The assessment followed a structured Vulnerability Assessment and Penetration
+Testing (VAPT) methodology. The methodology was designed to move from
+initial planning and reconnaissance to vulnerability identification,
+validation, documentation, and remediation.
+
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}[
+    node distance=0.25cm,
+    every node/.style={
+        font=\small\bfseries,
+        align=center
+    },
+    phase/.style={
+        rectangle,
+        rounded corners,
+        draw=primary,
+        fill=lightblue,
+        minimum width=0.82\textwidth,
+        minimum height=0.65cm
+    },
+    arrow/.style={
+        ->,
+        thick,
+        color=secondary
+    }
+]
+
+\node[phase] (p1) {Phase 1\\Planning and Scoping};
+\node[phase, below=of p1] (p2) {Phase 2\\Reconnaissance};
+\node[phase, below=of p2] (p3) {Phase 3\\Vulnerability Assessment};
+\node[phase, below=of p3] (p4) {Phase 4\\Manual Verification and Proof of Concept};
+\node[phase, below=of p4] (p5) {Phase 5\\Post-Exploitation and Impact Analysis};
+\node[phase, below=of p5] (p6) {Phase 6\\Reporting and Risk Assessment};
+\node[phase, below=of p6] (p7) {Phase 7\\Remediation and Retesting};
+
+\draw[arrow] (p1) -- (p2);
+\draw[arrow] (p2) -- (p3);
+\draw[arrow] (p3) -- (p4);
+\draw[arrow] (p4) -- (p5);
+\draw[arrow] (p5) -- (p6);
+\draw[arrow] (p6) -- (p7);
+
+\end{tikzpicture}
+\caption{VAPT assessment methodology}
+\end{figure}
+
+Each phase shown above is documented as its own chapter later in this
+report: Phase 1 in Chapter~\ref{chap:phase1}, Phase 2 in
+Chapter~\ref{chap:phase2}, Phase 3 in Chapter~\ref{chap:phase3},
+Phase 4 in Chapter~\ref{chap:phase4}, Phase 5 in
+Chapter~\ref{chap:phase5}, Phase 6 in Chapter~\ref{chap:phase6}, and
+Phase 7 in Chapter~\ref{chap:phase7}.

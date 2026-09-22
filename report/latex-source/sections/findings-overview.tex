@@ -1,0 +1,125 @@
+\subsection*{Confirmed Vulnerabilities}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{6cm}|l|l|}
+\hline
+\textbf{ID} & \textbf{Vulnerability} & \textbf{Severity} & \textbf{Status} \\
+\hline
+
+BAC &
+Broken Access Control -- Privilege Escalation via Registration &
+Critical &
+Confirmed \\
+\hline
+
+IDOR &
+Insecure Direct Object Reference -- Unauthorized Basket Access &
+Medium &
+Confirmed \\
+\hline
+
+AUTH &
+Weak Password Recovery &
+Critical &
+Confirmed \\
+\hline
+
+SQLI-01 &
+SQL Injection -- Authentication Bypass &
+Critical &
+Confirmed \\
+\hline
+
+SQLI-02 &
+SQL Injection -- Product Search and Data Extraction &
+High &
+Confirmed \\
+\hline
+
+XSS &
+Reflected Cross-Site Scripting -- Search Parameter &
+Medium &
+Confirmed \\
+\hline
+
+CSRF &
+Cross-Site Request Forgery -- Profile Update &
+Medium &
+Confirmed \\
+\hline
+
+OR &
+Open Redirect -- Unvalidated Redirect Parameter &
+Medium &
+Confirmed \\
+\hline
+
+\end{tabular}
+\caption{Summary of confirmed security vulnerabilities}
+\end{table}
+
+\subsection*{Risk Overview}
+
+The assessment identified eight confirmed security vulnerabilities
+affecting access control, authentication, application input, client-side
+security, request integrity, and redirect handling.
+
+Three findings were classified as Critical, one as High, and four as
+Medium.
+
+The Critical findings include Broken Access Control, SQL Injection --
+Authentication Bypass, and Weak Password Recovery. The Broken Access
+Control finding affects privilege-related actions during registration.
+The Weak Password Recovery finding allows an attacker to take over an
+account, including a privileged account, through a predictable
+security question.
+
+The single High-severity finding is SQL Injection -- Product Search
+and Data Extraction, which allows unauthorized database interaction
+without requiring authentication.
+
+The Medium-severity findings include Reflected Cross-Site Scripting,
+Insecure Direct Object Reference, Open Redirect, and Cross-Site
+Request Forgery. The Reflected XSS vulnerability can allow
+attacker-controlled JavaScript to execute in a victim's browser when a
+malicious link is opened. The IDOR vulnerability allows access to
+another user's basket by changing the basket identifier in the
+request. The Open Redirect vulnerability allows an attacker-controlled
+destination to redirect a victim to an external website. The CSRF
+vulnerability allows an attacker-controlled webpage to submit a
+profile update request while a victim is authenticated.
+
+\subsection*{Finding Distribution}
+
+The confirmed findings cover the following major security areas:
+
+\begin{itemize}
+
+    \item \textbf{Broken Access Control} -- Unauthorized privilege
+    escalation through the affected registration functionality.
+
+    \item \textbf{Insecure Direct Object Reference} -- Unauthorized
+    access to another user's basket by manipulating the basket
+    identifier.
+
+    \item \textbf{Authentication} -- Weakness in the password recovery
+    mechanism through the security-question process.
+
+    \item \textbf{SQL Injection} -- Authentication bypass and
+    unauthorized retrieval of application data.
+
+    \item \textbf{Cross-Site Scripting} -- Execution of
+    attacker-controlled JavaScript in a victim's browser.
+
+    \item \textbf{Cross-Site Request Forgery} -- Unauthorized profile
+    modification through a cross-site request.
+
+    \item \textbf{Open Redirect} -- Redirect validation weakness
+    allowing navigation to an external domain.
+
+\end{itemize}
+
+Detailed testing steps, evidence, impact, and remediation
+recommendations for each confirmed finding are provided in the
+following sections of this report.

@@ -1,0 +1,39 @@
+This report presents the results of a Vulnerability Assessment and
+Penetration Testing (VAPT) assessment conducted against a locally
+hosted OWASP Juice Shop application. OWASP Juice Shop is a deliberately
+vulnerable web application that provides a controlled environment for
+identifying and understanding common web application security
+weaknesses.
+
+The assessment was performed in a controlled environment with the
+objective of examining the security of the application from an
+attacker-oriented perspective. The testing process combined automated
+security tools with manual testing and verification techniques.
+
+The assessment was organized into a structured sequence of activities,
+beginning with planning and scoping, followed by reconnaissance,
+vulnerability scanning and assessment, and manual verification and
+proof-of-concept testing. The results from these activities were used
+to identify potential security weaknesses and select findings for
+further manual analysis and validation.
+
+The assessment confirmed eight security vulnerabilities covering
+multiple security areas, including Broken Access Control, Insecure
+Direct Object Reference (IDOR), Weak Password Recovery, SQL Injection,
+Reflected Cross-Site Scripting (XSS), Cross-Site Request Forgery
+(CSRF), and Open Redirect. Evidence was collected during testing to
+support each confirmed finding and provide a clear record of the
+assessment activities.
+
+The confirmed findings consisted of three Critical-severity findings,
+one High-severity finding, and four Medium-severity findings. The
+Critical findings included Broken Access Control, SQL Injection --
+Authentication Bypass, and Weak Password Recovery. The single
+High-severity finding was SQL Injection -- Product Search and Data
+Extraction, while Reflected XSS, IDOR, CSRF, and Open Redirect were
+classified as Medium severity.
+
+The remainder of this report presents the assessment objectives,
+scope, methodology, tools, phase-wise testing activities, confirmed
+vulnerabilities, risk assessment, remediation recommendations,
+retesting activities, and supporting evidence.

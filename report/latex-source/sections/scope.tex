@@ -1,0 +1,89 @@
+This section defines the target, boundaries, and rules followed during
+the Vulnerability Assessment and Penetration Testing (VAPT) engagement.
+The assessment was performed in a controlled local laboratory
+environment.
+
+\subsection{Assessment Scope}
+
+The assessment was performed against a locally hosted instance of the
+OWASP Juice Shop application. The target and testing boundaries were
+defined before the assessment began.
+
+\begin{table}[!htb]
+\centering
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.32\textwidth} X}
+\toprule
+Assessment Item & Details \\
+\midrule
+Target Application & OWASP Juice Shop \\
+Target URL & \texttt{http://127.0.0.1:3000} \\
+Environment & Local laboratory environment \\
+Assessment Type & Web Application VAPT \\
+Testing Approach & Manual and automated testing \\
+\bottomrule
+\end{tabularx}
+\caption{Assessment target and environment}
+\end{table}
+
+\subsection{In-Scope Components}
+
+The following parts of the application were included in the
+assessment:
+
+\begin{itemize}
+    \item OWASP Juice Shop web application
+    \item Application pages, routes, and endpoints
+    \item REST API endpoints
+    \item Authentication and session mechanisms
+    \item User-controlled input fields and parameters
+    \item Application access-control mechanisms
+    \item HTTP communication between the client and server
+    \item Security-related application configurations
+\end{itemize}
+
+\subsection{Out-of-Scope Components}
+
+The following components and activities were not included in the
+assessment:
+
+\begin{itemize}
+    \item External websites and third-party services
+    \item Other devices or systems on the local network
+    \item Exploitation of the host operating system
+    \item Denial-of-Service (DoS) testing
+    \item Any system outside the defined OWASP Juice Shop laboratory
+    environment
+\end{itemize}
+
+\subsection{Rules of Engagement}
+
+The following rules were followed during the assessment:
+
+\begin{itemize}
+    \item Testing was restricted to the locally hosted OWASP Juice
+    Shop instance.
+
+    \item Testing activities were limited to the defined assessment
+    scope.
+
+    \item No testing was performed against real-world or unauthorized
+    systems.
+
+    \item Denial-of-Service testing was excluded from the assessment.
+
+    \item Vulnerabilities identified during testing were documented
+    with appropriate supporting evidence.
+
+    \item Testing was performed in a controlled laboratory environment
+    for educational and cybersecurity training purposes.
+\end{itemize}
+
+\subsection{Assessment Authorization}
+
+The OWASP Juice Shop application was hosted locally as an
+intentionally vulnerable application for security testing and
+educational purposes.
+
+All activities documented in this report were therefore limited to
+the defined local laboratory environment and the specified target
+application.

@@ -1,0 +1,162 @@
+This section provides an overall summary of the security risks
+associated with the vulnerabilities confirmed during the assessment
+of the OWASP Juice Shop application.
+
+\subsection*{Overall Risk Assessment}
+
+The assessment identified eight confirmed vulnerabilities across
+authentication, authorization, input validation, client-side security,
+request integrity, and redirect handling.
+
+Three findings were classified as Critical, one as High, and four as
+Medium. The Critical and High severity findings affect important
+application security controls and should be prioritized for
+remediation.
+
+The risk assessment presented in this report is based on the
+vulnerabilities that were identified and manually validated during
+the engagement.
+
+\subsection*{Severity Rating Definitions}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Severity} & \textbf{Definition} \\
+\hline
+Critical &
+Vulnerabilities with the potential to cause severe compromise of
+authentication, authorization, application functionality, or
+sensitive data, depending on the affected component and exploitation
+conditions. \\
+\hline
+High &
+Vulnerabilities that can result in significant unauthorized access,
+data exposure, account compromise, or execution of attacker-controlled
+content under the applicable exploitation conditions. \\
+\hline
+Medium &
+Vulnerabilities that weaken application security controls or enable
+unauthorized actions or further attacks, but generally have more
+limited impact or require additional conditions. \\
+\hline
+Low &
+Vulnerabilities with limited direct security impact, such as minor
+information disclosure or configuration weaknesses. \\
+\hline
+\end{tabular}
+\caption{Severity rating definitions used in this report}
+\end{table}
+
+\subsection*{Risk Distribution}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Severity} & \textbf{Number of Findings} & \textbf{Percentage} \\
+\hline
+Critical & 3 & 37.5\% \\
+\hline
+High & 1 & 12.5\% \\
+\hline
+Medium & 4 & 50\% \\
+\hline
+Low & 0 & 0\% \\
+\hline
+\textbf{Total} & \textbf{8} & \textbf{100\%} \\
+\hline
+\end{tabular}
+\caption{Distribution of confirmed findings by severity}
+\end{table}
+
+\subsection*{Risk Matrix}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Finding ID} & \textbf{Likelihood of Exploitation} &
+\textbf{Business Impact} \\
+\hline
+SQLI-01 & High & Critical \\
+\hline
+BAC & High & Critical \\
+\hline
+AUTH & Medium & Critical \\
+\hline
+SQLI-02 & High & High \\
+\hline
+XSS & Medium & Medium \\
+\hline
+IDOR & High & Medium \\
+\hline
+OR & Medium & Medium \\
+\hline
+CSRF & Medium & Medium \\
+\hline
+\end{tabular}
+\caption{Risk matrix showing likelihood and business impact for each
+confirmed finding}
+\end{table}
+
+\subsection*{Key Risk Observations}
+
+\begin{itemize}
+
+    \item Three Critical-severity vulnerabilities were confirmed
+    during the assessment. These findings affect authentication,
+    authorization, and account recovery functionality.
+
+    \item The BAC finding demonstrates a weakness in authorization
+    controls that can allow unauthorized privilege-related actions
+    through the affected registration functionality.
+
+    \item SQLI-01 demonstrates that the login functionality can be
+    bypassed through SQL Injection, resulting in unauthorized
+    administrative access.
+
+    \item The AUTH finding demonstrates that the password recovery
+    mechanism relies on a predictable security question, allowing an
+    attacker to take over the affected account without knowledge of
+    the original password. If the same weakness affected a privileged
+    account, it could potentially lead to unauthorized administrative
+    access. This finding was classified as Critical severity based on
+    its CVSS score and the potential for full account takeover.
+
+    \item SQLI-02 was classified as High severity. It does not
+    require authentication, but its confirmed impact was limited to
+    unauthorized read access to database records rather than a
+    full authentication bypass.
+
+    \item The IDOR finding demonstrates that server-side authorization
+    checks are insufficient for the affected basket resource, as the
+    basket identifier can be manipulated to access another user's
+    resource. This finding was classified as Medium severity based on
+    the confidentiality-only impact and the requirement for an
+    authenticated session.
+
+    \item The XSS, CSRF, and Open Redirect findings demonstrate
+    additional Medium-severity weaknesses affecting client-side
+    execution, request integrity, and redirect handling respectively.
+
+    \item No Low-severity vulnerabilities are included in the final
+    confirmed findings because the assessment focused on findings
+    that were successfully identified and manually validated with
+    demonstrable security impact.
+
+\end{itemize}
+
+\subsection*{Conclusion of Risk Assessment}
+
+The confirmed vulnerabilities demonstrate security weaknesses in
+multiple application controls, including authentication,
+authorization, input validation, client-side security, and request
+integrity.
+
+The Critical and High severity findings should be addressed before
+the application is deployed in an environment where it processes
+real user data or provides access to sensitive functionality.

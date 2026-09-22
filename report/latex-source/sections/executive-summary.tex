@@ -1,0 +1,140 @@
+\subsection*{Assessment Overview}
+
+The assessment began with the definition of the testing scope,
+objectives, rules of engagement, and target environment. Reconnaissance
+activities were then performed to identify application functionality,
+endpoints, parameters, and other accessible components.
+
+Automated security testing was performed using tools such as OWASP
+ZAP and FFUF, while SQLMap was used where appropriate for SQL
+Injection assessment. The identified potential vulnerabilities were
+then manually verified using techniques including crafted HTTP
+requests and Burp Suite.
+
+Only vulnerabilities that were successfully validated and supported
+by appropriate evidence were included as confirmed findings in this
+report.
+
+\subsection*{Confirmed Findings}
+
+A total of eight vulnerabilities were confirmed during the
+assessment.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|l|p{6cm}|l|}
+\hline
+\textbf{Finding ID} & \textbf{Vulnerability} & \textbf{Severity} \\
+\hline
+BAC & Broken Access Control -- Privilege Escalation via Registration
+& Critical \\
+\hline
+IDOR & Insecure Direct Object Reference -- Unauthorized Basket Access
+& Medium \\
+\hline
+AUTH & Weak Password Recovery & Critical \\
+\hline
+SQLI-01 & SQL Injection -- Authentication Bypass & Critical \\
+\hline
+SQLI-02 & SQL Injection -- Product Search and Data Extraction
+& High \\
+\hline
+XSS & Reflected Cross-Site Scripting -- Search Parameter & Medium \\
+\hline
+CSRF & Cross-Site Request Forgery -- Profile Update & Medium \\
+\hline
+OR & Open Redirect -- Unvalidated Redirect Parameter & Medium \\
+\hline
+\end{tabular}
+\caption{Summary of confirmed vulnerabilities}
+\end{table}
+
+\subsection*{Severity Distribution}
+
+The confirmed findings consist of three Critical-severity findings,
+one High-severity finding, and four Medium-severity findings.
+
+\begin{itemize}
+    \item \textbf{Critical:} 3 findings
+    \item \textbf{High:} 1 finding
+    \item \textbf{Medium:} 4 findings
+    \item \textbf{Low:} 0 findings
+\end{itemize}
+
+The Critical findings include Broken Access Control, SQL Injection --
+Authentication Bypass, and Weak Password Recovery. The single
+High-severity finding is SQL Injection -- Product Search and Data
+Extraction. Reflected XSS, IDOR, CSRF, and Open Redirect were
+classified as Medium severity based on the demonstrated impact and
+exploitation conditions.
+
+\subsection*{Key Security Observations}
+
+The assessment identified weaknesses across several important
+application security controls.
+
+The SQL Injection findings demonstrate insufficient protection of
+user-controlled input used by database-related functionality. The
+login functionality was found to be susceptible to authentication
+bypass, while the product search functionality was found to allow
+unauthorized database interaction under the tested conditions.
+
+The Broken Access Control finding demonstrates a weakness in
+server-side authorization and privilege assignment. The Weak Password
+Recovery finding demonstrates that an attacker can take over the
+affected account without knowledge of the original password. If the
+same weakness affected a privileged account, it could potentially lead
+to unauthorized administrative access.
+
+The remaining findings affect resource authorization, client-side
+script
+execution, state-changing requests, and redirect handling.
+Together, these findings demonstrate that security controls should be
+strengthened across multiple areas of the application.
+
+\subsection*{Business and Security Impact}
+
+The confirmed vulnerabilities may affect the confidentiality,
+integrity, and security of application resources depending on the
+specific vulnerability and exploitation conditions.
+
+The Critical and High severity findings require particular attention
+because they affect authentication, authorization, account recovery,
+and database interaction.
+
+If similar weaknesses existed in a production application handling
+real user information, successful exploitation could result in
+unauthorized access, modification of application resources, exposure
+of data, account compromise, or execution of attacker-controlled
+content.
+
+\subsection*{Recommended Actions}
+
+The identified vulnerabilities should be addressed according to their
+severity and associated risk.
+
+Priority should be given to implementing parameterized database
+queries, enforcing server-side authorization and role assignment,
+strengthening password recovery controls, implementing object-level
+authorization checks, and applying appropriate output encoding and
+request protection.
+
+Additional controls should include secure redirect validation,
+appropriate security headers, least-privilege access, server-side
+input validation, and security monitoring.
+
+After remediation, all confirmed findings should be retested using
+the original proof-of-concept techniques and additional relevant test
+cases to verify that the vulnerabilities have been effectively
+addressed.
+
+\subsection*{Report Scope}
+
+This report documents the testing activities, identified
+vulnerabilities, supporting evidence, impact assessment, and
+recommended remediation measures within the defined assessment scope.
+
+The findings and conclusions presented in this report are based on
+the testing performed against the specified OWASP Juice Shop
+environment during this engagement.
