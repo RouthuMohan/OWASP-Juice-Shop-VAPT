@@ -4,7 +4,9 @@
 
 Phase 6 focused on consolidating the results of the VAPT assessment into a structured security assessment report and evaluating the risk associated with the confirmed vulnerabilities.
 
-The findings confirmed during the assessment were documented with their severity, CVSS scores, affected functionality, security impact, and remediation recommendations.
+The findings confirmed during the assessment were documented with their severity, CVSS scores, affected functionality, security impact, evidence, and remediation recommendations.
+
+The final report was prepared using the evidence collected throughout the assessment and the findings confirmed during the manual verification and proof-of-concept phase.
 
 ## Objectives
 
@@ -15,6 +17,7 @@ The main objectives of Phase 6 were:
 - Assign severity levels based on the assessed risk.
 - Document CVSS 3.1 scores and vectors.
 - Analyze the potential impact of each finding.
+- Reference supporting proof-of-concept evidence.
 - Provide remediation recommendations.
 - Prepare the final VAPT security assessment report.
 - Present the overall security posture of the assessed application.
@@ -61,7 +64,7 @@ The final scores were:
 - CSRF — 4.3 (Medium)
 - OR — 4.3 (Medium)
 
-The CVSS scores and vectors are documented in detail in the final VAPT report.
+The corresponding CVSS vectors and detailed scoring rationale are documented in the final VAPT report.
 
 ## Risk Assessment
 
@@ -77,11 +80,11 @@ The assessment identified security risks across several areas of the application
 - Account security
 - User redirection
 
-The Critical findings included privilege escalation, weak password recovery, and SQL Injection authentication bypass.
+The Critical findings included privilege escalation, weaknesses in password recovery, and SQL Injection resulting in authentication bypass.
 
 The High finding involved SQL Injection in the product search functionality and potential database information disclosure.
 
-The Medium findings affected authorization, basket access, client-side execution, profile modification, and redirect functionality.
+The Medium findings affected authorization, unauthorized basket access, client-side script execution, profile modification, and redirect functionality.
 
 ## Remediation Recommendations
 
