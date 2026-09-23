@@ -4,27 +4,26 @@ A Vulnerability Assessment and Penetration Testing (VAPT) project performed agai
 
 ## Project Overview
 
-This project demonstrates a structured web application security assessment covering:
+This project demonstrates a structured web application security assessment covering the complete VAPT lifecycle:
 
 - Planning and Scoping
 - Reconnaissance
 - Vulnerability Scanning and Assessment
 - Manual Verification and Proof of Concept
 - Post-Exploitation and Impact Analysis
-- Risk Assessment
-- Remediation Recommendations
-- Retesting Methodology
+- Reporting and Risk Assessment
+- Remediation Recommendations and Retesting Methodology
 
 The assessment was performed against a locally hosted OWASP Juice Shop instance for educational and cybersecurity training purposes.
 
 ## Target
 
-| Item            | Details                     |
-| --------------- | --------------------------- |
-| Application     | OWASP Juice Shop            |
-| Environment     | Controlled Local Laboratory |
-| Target URL      | `http://127.0.0.1:3000`     |
-| Assessment Type | Web Application VAPT        |
+| Item | Details |
+|---|---|
+| Application | OWASP Juice Shop |
+| Environment | Controlled Local Laboratory |
+| Target URL | `http://127.0.0.1:3000` |
+| Assessment Type | Web Application VAPT |
 
 ## Tools Used
 
@@ -38,16 +37,16 @@ The assessment was performed against a locally hosted OWASP Juice Shop instance 
 
 ## Confirmed Vulnerabilities
 
-| Finding ID | Vulnerability                                                 | Severity |
-| ---------- | ------------------------------------------------------------- | -------- |
-| BAC        | Broken Access Control – Privilege Escalation                  | Critical |
-| IDOR       | Insecure Direct Object Reference – Unauthorized Basket Access | Medium   |
-| AUTH       | Weak Password Recovery Mechanism via Security Question        | Critical |
-| SQLI-01    | SQL Injection – Authentication Bypass                         | Critical |
-| SQLI-02    | SQL Injection – Product Search/Data Extraction                | High     |
-| XSS        | Reflected Cross-Site Scripting – Search Parameter             | Medium   |
-| CSRF       | Cross-Site Request Forgery – Profile Update                   | Medium   |
-| OR         | Open Redirect – Unvalidated Redirect Parameter                | Medium   |
+| Finding ID | Vulnerability | Severity |
+|---|---|---|
+| BAC | Broken Access Control – Privilege Escalation via Registration | Critical |
+| IDOR | Insecure Direct Object Reference – Unauthorized Basket Access | Medium |
+| AUTH | Weak Password Recovery | Critical |
+| SQLI-01 | SQL Injection – Authentication Bypass | Critical |
+| SQLI-02 | SQL Injection – Product Search and Data Extraction | High |
+| XSS | Reflected Cross-Site Scripting – Search Parameter | Medium |
+| CSRF | Cross-Site Request Forgery – Profile Update | Medium |
+| OR | Open Redirect – Unvalidated Redirect Parameter | Medium |
 
 ### Severity Distribution
 
@@ -62,21 +61,24 @@ The assessment was performed against a locally hosted OWASP Juice Shop instance 
 The repository contains supporting evidence collected during the assessment, including:
 
 - Reconnaissance results
-- OWASP ZAP scan evidence
+- Nmap scanning results
+- Wappalyzer technology identification
+- FFUF directory discovery
+- OWASP ZAP scanning evidence
 - Burp Suite requests and responses
-- FFUF reconnaissance evidence
 - SQLMap results
-- Proof-of-concept screenshots
-- Successful validation evidence
-- Remediation and retesting documentation
+- Manual proof-of-concept evidence
+- Successful vulnerability validation evidence
+- Impact analysis documentation
+- Remediation and retesting methodology
 
 Evidence is organized under the `evidence/` directory.
 
-## Final Report
+## Final VAPT Report
 
 The complete VAPT assessment report is available here:
 
-`report/VAPT-Report-Final.pdf`
+[**VAPT-Report-Final.pdf**](report/VAPT-Report-Final.pdf)
 
 The report contains:
 
@@ -86,9 +88,9 @@ The report contains:
 - Reconnaissance
 - Vulnerability Assessment
 - Manual Verification and PoC
+- Post-Exploitation and Impact Analysis
 - Risk Assessment
 - Technical Findings
-- Impact Analysis
 - CVSS Scoring
 - Remediation Recommendations
 - Retesting Methodology
@@ -98,7 +100,7 @@ The report contains:
 
 The LaTeX source used to prepare the report is available under:
 
-`report/latex-source/`
+[**report/latex-source/**](report/latex-source/)
 
 ## Repository Structure
 
@@ -116,24 +118,24 @@ OWASP-Juice-Shop-VAPT/
 │
 ├── evidence/
 │   ├── phase2/
+│   │   └── images-proved/
 │   ├── phase3/
+│   │   └── zap/
 │   └── phase4/
+│       ├── authentication/
+│       ├── bac/
+│       ├── csrf/
+│       ├── idor/
+│       ├── openredirect/
+│       ├── sqli-1/
+│       ├── sqli-2/
+│       └── xss-reflected/
 │
 └── archive/
     ├── Phase-1-Planning-and-Scoping/
     ├── Phase-2-Reconnaissance/
     ├── Phase-3-Vulnerability-Scanning-and-Assessment/
-    └── Phase-4-Manual-Verification-and-PoC/
-```
-
-## Retesting Status
-
-The report documents the planned retesting methodology. At the time of the assessment, remediation had not yet been implemented and retesting had not been performed.
-
-## Disclaimer
-
-This assessment was conducted against an intentionally vulnerable OWASP Juice Shop instance hosted in a controlled local laboratory environment for educational and cybersecurity training purposes.
-
-No unauthorized real-world systems were tested.
-
-The findings and evidence in this repository are intended for educational, portfolio, and cybersecurity training purposes.
+    ├── Phase-4-Manual-Verification-and-PoC/
+    ├── Phase-5-Post-Exploitation-and-Impact-Analysis/
+    ├── Phase-6-Reporting-and-Risk-Assessment/
+    └── Phase-7-Remediation-and-Retesting/
